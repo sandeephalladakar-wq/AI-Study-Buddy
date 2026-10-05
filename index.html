@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Study Buddy</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="topbar">
+
+    <div class="logo">
+        🤖 <span>AI Study Buddy</span>
+    </div>
+
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+    <nav id="navMenu">
+
+        <button onclick="showSection('home')">🏠 Home</button>
+
+        <button onclick="showSection('ask')">🤖 Ask AI</button>
+
+        <button onclick="showSection('notes')">📝 Notes</button>
+
+        <button onclick="showSection('quiz')">🧠 Quiz</button>
+
+        <button onclick="showSection('flashcards')">🃏 Flashcards</button>
+
+        <button onclick="showSection('timer')">⏱️ Timer</button>
+
+        <button onclick="showSection('progress')">📊 Progress</button>
+
+        <button onclick="showSection('profile')">👤 Profile</button>
+
+    </nav>
+
+</header>
+
+
+<!-- ================= MAIN ================= -->
+
+<main>
+
+
+<!-- ================= HOME ================= -->
+
+<section id="home" class="section active">
+
+    <div class="hero">
+
+        <div class="hero-text">
+
+            <p class="small-title">WELCOME TO YOUR PERSONAL STUDY ASSISTANT</p>
+
+            <h1>
+                Learn Smarter with
+                <span>AI Study Buddy</span>
+            </h1>
+
+            <p>
+                Ask questions, create notes, practice quizzes,
+                revise with flashcards and track your study progress.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button class="primary-btn"
+                        onclick="showSection('ask')">
+                    🤖 Ask AI
+                </button>
+
+                <button class="secondary-btn"
+                        onclick="showSection('quiz')">
+                    🧠 Start Quiz
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="robot">
+
+            <div class="robot-face">
+
+                <div class="eye"></div>
+                <div class="eye"></div>
+
+                <div class="robot-mouth"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="welcome-card">
+
+        <h2>👋 Welcome, <span id="welcomeName">Student</span>!</h2>
+
+        <p>
+            Your study dashboard is ready.
+            Choose a tool below and start learning.
+        </p>
+
+    </div>
+
+
+    <div class="feature-grid">
+
+        <div class="feature-card" onclick="showSection('ask')">
+            <div class="feature-icon">🤖</div>
+            <h3>Ask AI</h3>
+            <p>Ask questions and get simple explanations.</p>
+        </div>
+
+        <div class="feature-card" onclick="showSection('notes')">
+            <div class="feature-icon">📝</div>
+            <h3>Notes</h3>
+            <p>Create and save your study notes.</p>
+        </div>
+
+        <div class="feature-card" onclick="showSection('quiz')">
+            <div class="feature-icon">🧠</div>
+            <h3>Quiz</h3>
+            <p>Test your knowledge with practice questions.</p>
+        </div>
+
+        <div class="feature-card" onclick="showSection('flashcards')">
+            <div class="feature-icon">🃏</div>
+            <h3>Flashcards</h3>
+            <p>Quickly revise important concepts.</p>
+        </div>
+
+        <div class="feature-card" onclick="showSection('timer')">
+            <div class="feature-icon">⏱️</div>
+            <h3>Study Timer</h3>
+            <p>Focus using a simple study timer.</p>
+        </div>
+
+        <div class="feature-card" onclick="showSection('progress')">
+            <div class="feature-icon">📊</div>
+            <h3>Progress</h3>
+            <p>See your learning progress.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= ASK AI ================= -->
+
+<section id="ask" class="section">
+
+    <div class="section-title">
+
+        <span>🤖</span>
+
+        <div>
+            <h2>Ask AI</h2>
+            <p>Your study assistant</p>
+        </div>
+
+    </div>
+
+
+    <div class="ai-card">
+
+        <label>What do you want to learn?</label>
+
+        <textarea
+            id="questionInput"
+            placeholder="Example: Explain photosynthesis in simple words..."
+        ></textarea>
+
+
+        <div class="quick-buttons">
+
+            <button onclick="setQuestion('Explain photosynthesis in simple words.')">
+                🌱 Biology
+            </button>
+
+            <button onclick="setQuestion('Explain Newton’s laws of motion.')">
+                ⚡ Physics
+            </button>
+
+            <button onclick="setQuestion('Explain the water cycle.')">
+                💧 Science
+            </button>
+
+            <button onclick="setQuestion('Explain fractions with an example.')">
+                ➗ Maths
+            </button>
+
+        </div>
+
+
+        <div class="ai-actions">
+
+            <button class="voice-btn" onclick="startVoiceQuestion()">
+                🎤 Ask by Voice
+            </button>
+
+            <button class="primary-btn" onclick="askAI()">
+                🤖 Ask AI
+            </button>
+
+        </div>
+
+
+        <div id="aiAnswer" class="answer-box">
+
+            <div class="answer-icon">✨</div>
+
+            <div>
+                <h3>AI Answer</h3>
+
+                <p>
+                    Your answer will appear here.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= NOTES ================= -->
+
+<section id="notes" class="section">
+
+    <div class="section-title">
+
+        <span>📝</span>
+
+        <div>
+            <h2>My Notes</h2>
+            <p>Save your important study notes</p>
+        </div>
+
+    </div>
+
+
+    <div class="notes-form">
+
+        <input
+            id="noteTitle"
+            type="text"
+            placeholder="Note title"
+        >
+
+        <textarea
+            id="noteText"
+            placeholder="Write your note here..."
+        ></textarea>
+
+        <button class="primary-btn" onclick="saveNote()">
+            💾 Save Note
+        </button>
+
+    </div>
+
+
+    <h3 class="sub-heading">Saved Notes</h3>
+
+    <div id="notesList" class="notes-list"></div>
+
+</section>
+
+
+
+<!-- ================= QUIZ ================= -->
+
+<section id="quiz" class="section">
+
+    <div class="section-title">
+
+        <span>🧠</span>
+
+        <div>
+            <h2>Practice Quiz</h2>
+            <p>Test what you have learned</p>
+        </div>
+
+    </div>
+
+
+    <div id="quizStart" class="quiz-start">
+
+        <div class="quiz-icon">🧠</div>
+
+        <h2>Ready for a Quiz?</h2>
+
+        <p>
+            Answer the questions and check your score.
+        </p>
+
+        <button class="primary-btn" onclick="startQuiz()">
+            🚀 Start Quiz
+        </button>
+
+    </div>
+
+
+    <div id="quizArea" class="quiz-area hidden">
+
+        <div class="quiz-top">
+
+            <span id="questionNumber">
+                Question 1 / 5
+            </span>
+
+            <span id="scoreDisplay">
+                Score: 0
+            </span>
+
+        </div>
+
+
+        <div class="question-card">
+
+            <h2 id="quizQuestion">
+                Question
+            </h2>
+
+            <div id="quizOptions"></div>
+
+        </div>
+
+
+        <button
+            id="nextQuestionBtn"
+            class="primary-btn"
+            onclick="nextQuestion()"
+        >
+            Next Question →
+        </button>
+
+    </div>
+
+
+    <div id="quizResult" class="result-card hidden">
+
+        <div class="result-icon">🏆</div>
+
+        <h2>Quiz Completed!</h2>
+
+        <p id="finalScore"></p>
+
+        <button
+            class="primary-btn"
+            onclick="startQuiz()"
+        >
+            🔄 Try Again
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FLASHCARDS ================= -->
+
+<section id="flashcards" class="section">
+
+    <div class="section-title">
+
+        <span>🃏</span>
+
+        <div>
+            <h2>Flashcards</h2>
+            <p>Revise important concepts quickly</p>
+        </div>
+
+    </div>
+
+
+    <div class="flashcard-container">
+
+        <div
+            id="flashcard"
+            class="flashcard"
+            onclick="flipFlashcard()"
+        >
+
+            <div class="flash-front">
+
+                <span>QUESTION</span>
+
+                <h2 id="flashcardQuestion">
+                    What is photosynthesis?
+                </h2>
+
+                <p>Click the card to see the answer</p>
+
+            </div>
+
+
+            <div class="flash-back hidden" id="flashcardAnswer">
+
+                <span>ANSWER</span>
+
+                <h2>
+                    Photosynthesis is the process
+                    by which green plants make food
+                    using sunlight.
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="flash-buttons">
+
+            <button
+                class="secondary-btn"
+                onclick="previousFlashcard()"
+            >
+                ← Previous
+            </button>
+
+            <button
+                class="primary-btn"
+                onclick="nextFlashcard()"
+            >
+                Next →
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= TIMER ================= -->
+
+<section id="timer" class="section">
+
+    <div class="section-title">
+
+        <span>⏱️</span>
+
+        <div>
+            <h2>Study Timer</h2>
+            <p>Focus on your studies</p>
+        </div>
+
+    </div>
+
+
+    <div class="timer-card">
+
+        <div id="timerDisplay">
+            25:00
+        </div>
+
+
+        <p id="timerStatus">
+            Ready to study
+        </p>
+
+
+        <div class="timer-buttons">
+
+            <button
+                class="primary-btn"
+                onclick="startTimer()"
+            >
+                ▶ Start
+            </button>
+
+            <button
+                class="secondary-btn"
+                onclick="pauseTimer()"
+            >
+                ⏸ Pause
+            </button>
+
+            <button
+                class="danger-btn"
+                onclick="resetTimer()"
+            >
+                ↻ Reset
+            </button>
+
+        </div>
+
+
+        <div class="timer-presets">
+
+            <button onclick="setTimer(15)">
+                15 min
+            </button>
+
+            <button onclick="setTimer(25)">
+                25 min
+            </button>
+
+            <button onclick="setTimer(45)">
+                45 min
+            </button>
+
+            <button onclick="setTimer(60)">
+                60 min
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= PROGRESS ================= -->
+
+<section id="progress" class="section">
+
+    <div class="section-title">
+
+        <span>📊</span>
+
+        <div>
+            <h2>My Progress</h2>
+            <p>Track your learning activity</p>
+        </div>
+
+    </div>
+
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+
+            <span>📝</span>
+
+            <h2 id="notesCount">
+                0
+            </h2>
+
+            <p>Saved Notes</p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>🧠</span>
+
+            <h2 id="quizCount">
+                0
+            </h2>
+
+            <p>Quizzes Taken</p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>🏆</span>
+
+            <h2 id="bestScore">
+                0%
+            </h2>
+
+            <p>Best Score</p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>⏱️</span>
+
+            <h2 id="studyMinutes">
+                0
+            </h2>
+
+            <p>Study Minutes</p>
+
+        </div>
+
+    </div>
+
+
+    <div class="progress-card">
+
+        <h3>Learning Progress</h3>
+
+        <div class="progress-bar">
+
+            <div
+                id="progressFill"
+                class="progress-fill"
+            ></div>
+
+        </div>
+
+        <p id="progressText">
+            0% completed
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= PROFILE ================= -->
+
+<section id="profile" class="section">
+
+    <div class="section-title">
+
+        <span>👤</span>
+
+        <div>
+            <h2>Student Profile</h2>
+            <p>Your study profile</p>
+        </div>
+
+    </div>
+
+
+    <div class="profile-card">
+
+        <div class="profile-avatar">
+            👨‍🎓
+        </div>
+
+        <h2 id="profileDisplayName">
+            Student
+        </h2>
+
+        <p>AI Study Buddy Student</p>
+
+
+        <input
+            id="studentName"
+            type="text"
+            placeholder="Enter your name"
+        >
+
+
+        <button
+            class="primary-btn"
+            onclick="saveProfile()"
+        >
+            💾 Save Profile
+        </button>
+
+    </div>
+
+
+    <div class="certificate-card">
+
+        <div class="certificate-icon">
+            🏆
+        </div>
+
+        <h2>Study Achievement Certificate</h2>
+
+        <p>
+            Complete quizzes and generate your certificate.
+        </p>
+
+        <button
+            class="primary-btn"
+            onclick="generateCertificate()"
+        >
+            🎓 Generate Certificate
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= CERTIFICATE ================= -->
+
+<section id="certificate" class="section">
+
+    <div id="certificatePaper">
+
+        <div class="certificate-border">
+
+            <p class="certificate-small">
+                AI STUDY BUDDY
+            </p>
+
+            <h1>
+                🏆 CERTIFICATE
+            </h1>
+
+            <h2>
+                OF ACHIEVEMENT
+            </h2>
+
+            <p>
+                This certificate is proudly presented to
+            </p>
+
+            <h3 id="certificateName">
+                Student
+            </h3>
+
+            <p>
+                for completing practice activities
+                on AI Study Buddy.
+            </p>
+
+            <div class="certificate-score">
+
+                Best Quiz Score:
+                <strong id="certificateScore">
+                    0%
+                </strong>
+
+            </div>
+
+            <p class="certificate-date" id="certificateDate"></p>
+
+            <button
+                class="primary-btn no-print"
+                onclick="window.print()"
+            >
+                🖨️ Print Certificate
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <h3>🤖 AI Study Buddy</h3>
+
+    <p>
+        Learn • Practice • Revise • Improve
+    </p>
+
+    <p>
+        © 2026 AI Study Buddy
+    </p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
